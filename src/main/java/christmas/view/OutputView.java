@@ -7,4 +7,7 @@ public class OutputView {
         System.out.println(WELCOME_MESSAGE);
     }
 
+    public static void printError(String message) {
+        System.out.println(message);
+    }
 }

@@ -1,7 +1,9 @@
 package christmas.controller;
 
+import christmas.model.VisitDate;
 import christmas.service.PlannerService;
 import christmas.view.InputView;
+import christmas.view.OutputView;
 
 public class PlannerController {
     private final PlannerService plannerService;
@@ -11,11 +13,17 @@ public class PlannerController {
     }
 
     public void run() {
-        initVisitDate();
+        VisitDate visitDate = initVisitDate();
     }
 
-    private void initVisitDate() {
-        plannerService.initVisitDate(InputView.inputVisitDay());
+    private VisitDate initVisitDate() {
+        while (true) {
+            try {
+                return new VisitDate(InputView.inputVisitDay());
+            } catch (IllegalArgumentException invalidVisitDate) {
+                OutputView.printError(invalidVisitDate.getMessage());
+            }
+        }
     }
 
 }
