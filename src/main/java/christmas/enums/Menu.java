@@ -1,5 +1,8 @@
 package christmas.enums;
 
+import christmas.contants.ErrorMessages;
+import java.util.Arrays;
+
 public enum Menu {
     YANGSONG_SOUP("양송이수프", 6000, "애피타이저"),
     TAPAS("타파스", 5500, "애피타이저"),
@@ -25,6 +28,12 @@ public enum Menu {
         this.menuName = menuName;
         this.price = price;
         this.category = category;
+    }
+
+    public static Menu findMenu(String menuName) {
+        return Arrays.stream(values())
+                .filter(menu -> menu.menuName.equals(menuName))
+                .findFirst().orElseThrow(() -> new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE));
     }
 
     public String getMenuName() {
