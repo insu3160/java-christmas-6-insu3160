@@ -51,4 +51,17 @@ public class Orders {
                 .sum();
     }
 
+    public int countMainMenu() {
+        return orders.stream()
+                .filter(order -> order.matchedCategory(Category.MAIN))
+                .mapToInt(Order::getMenuQuantity)
+                .sum();
+    }
+    public int countDesertMenu() {
+        return orders.stream()
+                .filter(order -> order.matchedCategory(Category.DESSERT))
+                .mapToInt(Order::getMenuQuantity)
+                .sum();
+    }
+
 }

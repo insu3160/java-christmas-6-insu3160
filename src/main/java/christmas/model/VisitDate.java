@@ -2,6 +2,7 @@ package christmas.model;
 
 import christmas.contants.ErrorMessages;
 import christmas.service.dto.VisitDateDto;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class VisitDate {
@@ -31,6 +32,10 @@ public class VisitDate {
 
     public int getChristMasDday() {
         return CHRISTMAS_DAY - visitDate.getDayOfMonth();
+    }
+
+    public boolean isWeekend() {
+        return visitDate.getDayOfWeek() == DayOfWeek.FRIDAY || visitDate.getDayOfWeek() == DayOfWeek.SATURDAY;
     }
 
 }
