@@ -19,8 +19,8 @@ public class OutputView {
     }
 
     public static void displayEventBenefitsPreview(VisitDateDto visitDateDto) {
-        int month = visitDateDto.visitDateDto().getMonthValue();
-        int day = visitDateDto.visitDateDto().getDayOfMonth();
+        int month = visitDateDto.visitDate().getMonthValue();
+        int day = visitDateDto.visitDate().getDayOfMonth();
         System.out.println(String.format(EVENT_BENEFITS_DATE_MESSAGE, month, day));
     }
 
