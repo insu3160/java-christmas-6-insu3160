@@ -88,5 +88,18 @@ class OrdersTest {
 
         assertThat(orders.countMainMenu()).isEqualTo(3);
     }
+    @Test
+    @DisplayName("디저트 메뉴의 갯수를 잘 반환하는지 확인한다.")
+    void testCountDesertMenu(){
+        Orders orders = new Orders();
+        Order firstOrder = new Order(Menu.CHOCO_CAKE, new MenuQuantity(2));
+        Order secondOrder = new Order(Menu.ICE_CREAM, new MenuQuantity(2));
+        Order thirdOrder = new Order(Menu.BBQ_RIBS, new MenuQuantity(2));
+        orders.record(firstOrder);
+        orders.record(secondOrder);
+        orders.record(thirdOrder);
+
+        assertThat(orders.countDesertMenu()).isEqualTo(4);
+    }
 
 }
