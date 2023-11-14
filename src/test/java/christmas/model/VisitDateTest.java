@@ -41,5 +41,12 @@ class VisitDateTest {
         
         assertThat(visitDate.isWeekend()).isTrue();
     }
+    @Test
+    @DisplayName("방문 날짜가 특별 할인 받는 날짜일 때 true를 반환한다.")
+    void testIsSpecialDay(){
+        VisitDate visitDate = new VisitDate(25);
+
+        assertThat(visitDate.isSpecialDay()).isTrue();
+    }
 
 }
