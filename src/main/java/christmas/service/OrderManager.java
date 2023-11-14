@@ -4,8 +4,8 @@ import christmas.contants.ErrorMessages;
 import christmas.enums.Menu;
 import christmas.model.MenuQuantity;
 import christmas.model.Order;
-import christmas.model.OrderTotalAmount;
 import christmas.model.Orders;
+import christmas.model.TotalOrderAmount;
 import christmas.utils.Converter;
 
 public class OrderManager {
@@ -54,8 +54,8 @@ public class OrderManager {
 
     }
 
-    public OrderTotalAmount calculateTotalAmount(Orders orders) {
-        return new OrderTotalAmount(orders.caclulateTotalAmount());
+    public TotalOrderAmount calculateTotalAmount(Orders orders) {
+        return new TotalOrderAmount(orders.caclulateTotalAmount());
     }
 
 }
