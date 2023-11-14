@@ -5,6 +5,7 @@ import christmas.service.dto.VisitDateDto;
 import java.time.LocalDate;
 
 public class VisitDate {
+    private final static int CHRISTMAS_DAY = 25;
     private final static int START_DAY = 1;
     private final static int END_DAY = 31;
     private final LocalDate visitDate;
@@ -26,6 +27,10 @@ public class VisitDate {
 
     public VisitDateDto convertToVisitDateDto() {
         return new VisitDateDto(this.visitDate);
+    }
+
+    public int getChristMasDday() {
+        return CHRISTMAS_DAY - visitDate.getDayOfMonth();
     }
 
 }

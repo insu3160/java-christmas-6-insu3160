@@ -4,6 +4,7 @@ import christmas.model.Benefits;
 import christmas.model.Orders;
 import christmas.model.TotalOrderAmount;
 import christmas.model.VisitDate;
+import christmas.utils.EventCalculator;
 
 public class EventManager {
     private final VisitDate visitDate;
@@ -19,7 +20,7 @@ public class EventManager {
     public Benefits calculateBenefits() {
         Benefits benefits = new Benefits();
         if (totalOrderAmount.canParticipateInEvent()) {
-            
+            benefits.add(EventCalculator.calculateChristMasEvent(visitDate.getChristMasDday()));
         }
         return benefits;
     }

@@ -10,4 +10,8 @@ public class Benefits {
         this.benefits = new ArrayList<>();
     }
 
+    public void add(Benefit benefit) {
+        this.benefits.add(benefit);
+    }
+
 }
