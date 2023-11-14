@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.model.Benefits;
 import christmas.model.Orders;
 import christmas.model.TotalOrderAmount;
 import christmas.model.VisitDate;
@@ -17,6 +18,7 @@ public class PlannerController {
 
     public void run() {
         EventManager eventHandler = initEventManager();
+        Benefits benefits = eventHandler.calculateBenefits();
     }
 
     private EventManager initEventManager() {

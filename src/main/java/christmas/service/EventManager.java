@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.model.Benefits;
 import christmas.model.Orders;
 import christmas.model.TotalOrderAmount;
 import christmas.model.VisitDate;
@@ -13,6 +14,14 @@ public class EventManager {
         this.visitDate = visitDate;
         this.orders = orders;
         this.totalOrderAmount = totalOrderAmount;
+    }
+
+    public Benefits calculateBenefits() {
+        Benefits benefits = new Benefits();
+        if (totalOrderAmount.canParticipateInEvent()) {
+            
+        }
+        return benefits;
     }
 
 }
