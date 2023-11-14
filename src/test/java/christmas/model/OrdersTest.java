@@ -1,5 +1,6 @@
 package christmas.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,6 +21,17 @@ class OrdersTest {
         assertThatThrownBy(() -> orders.record(secondOrder))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
+    }
+    @Test
+    @DisplayName("총 메뉴 갯수가 20개 초과인지 아닌지 확인한다.")
+    void testIsOverMenuQuantityLimit(){
+        Orders orders = new Orders();
+        Order firstOrder = new Order(Menu.BBQ_RIBS,new MenuQuantity(15));
+        Order secondOrder = new Order(Menu.RED_WINE,new MenuQuantity(6));
+        orders.record(firstOrder);
+        orders.record(secondOrder);
+
+        assertThat(orders.isOverMenuQuantityLimit()).isTrue();
     }
 
 }
