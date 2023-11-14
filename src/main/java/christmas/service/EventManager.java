@@ -22,6 +22,7 @@ public class EventManager {
         if (totalOrderAmount.canParticipateInEvent()) {
             benefits.add(EventCalculator.calculateChristMasEvent(visitDate.getChristMasDday()));
             benefits.add(EventCalculator.calculateDailyEvent(visitDate, orders));
+            benefits.add(EventCalculator.calculateSpecialEvent(visitDate));
         }
         return benefits;
     }

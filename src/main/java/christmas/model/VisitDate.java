@@ -38,4 +38,8 @@ public class VisitDate {
         return visitDate.getDayOfWeek() == DayOfWeek.FRIDAY || visitDate.getDayOfWeek() == DayOfWeek.SATURDAY;
     }
 
+    public boolean isSpecialDay() {
+        return visitDate.getDayOfMonth() == CHRISTMAS_DAY || visitDate.getDayOfWeek() == DayOfWeek.SUNDAY;
+    }
+
 }
