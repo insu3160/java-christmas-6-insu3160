@@ -26,4 +26,12 @@ class VisitDateTest {
         assertThat(visitDateDto.visitDate()).isEqualTo(LocalDate.of(2023, 12, 15));
     }
 
+    @Test
+    @DisplayName("크리스마스 D-DAY를 잘 반환하는지 확인한다.")
+    void testGetChristMasDday() {
+        VisitDate visitDate = new VisitDate(15);
+
+        assertThat(visitDate.getChristMasDday()).isEqualTo(10);
+    }
+
 }
