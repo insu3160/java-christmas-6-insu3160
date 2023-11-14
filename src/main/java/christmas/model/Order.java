@@ -29,4 +29,8 @@ public class Order {
         return Objects.hash(menu);
     }
 
+    public int getMenuQuantity() {
+        return menuQuantity.getMenuQuantity();
+    }
+
 }

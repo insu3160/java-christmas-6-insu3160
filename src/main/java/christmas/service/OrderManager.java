@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.contants.ErrorMessages;
 import christmas.enums.Menu;
 import christmas.model.MenuQuantity;
 import christmas.model.Order;
@@ -16,8 +17,18 @@ public class OrderManager {
         for (String order : inputOrders) {
             orders.record(createOrder(order.split(ITEM_SEPARATOR)));
         }
+        validate(orders);
         return orders;
+    }
 
+    private void validate(Orders orders) {
+        checkTotalQuantity(orders);
+    }
+
+    private void checkTotalQuantity(Orders orders) {
+        if (orders.isOverMenuQuantityLimit()) {
+            throw new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
+        }
     }
 
     private Order createOrder(String[] order) {
