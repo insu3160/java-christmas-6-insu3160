@@ -34,4 +34,12 @@ class VisitDateTest {
         assertThat(visitDate.getChristMasDday()).isEqualTo(10);
     }
 
+    @Test
+    @DisplayName("방문 날짜가 주말일 때 true를 반환한다.")
+    void testIsWeekend() {
+        VisitDate visitDate = new VisitDate(23); // Saturday
+        
+        assertThat(visitDate.isWeekend()).isTrue();
+    }
+
 }
