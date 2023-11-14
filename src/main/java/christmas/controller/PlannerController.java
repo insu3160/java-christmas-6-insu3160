@@ -18,6 +18,7 @@ public class PlannerController {
     }
 
     public void run() {
+        OutputView.welcomeEventPlanner();
         EventManager eventManager = initEventManager();
         Benefits benefits = eventManager.calculateBenefits();
         displayBenefitPlanner(benefits);
