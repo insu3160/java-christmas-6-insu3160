@@ -23,6 +23,7 @@ public class EventManager {
             benefits.add(EventCalculator.calculateChristMasEvent(visitDate.getChristMasDday()));
             benefits.add(EventCalculator.calculateDailyEvent(visitDate, orders));
             benefits.add(EventCalculator.calculateSpecialEvent(visitDate));
+            benefits.add(EventCalculator.calculatGiftEvent(totalOrderAmount));
         }
         return benefits;
     }
