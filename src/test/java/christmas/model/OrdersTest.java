@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import christmas.contants.ErrorMessages;
 import christmas.enums.Menu;
+import christmas.service.dto.OrderDto;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -43,6 +45,19 @@ class OrdersTest {
         orders.record(secondOrder);
 
         assertThat(orders.hasOnlyBeverages()).isTrue();
+    }
+    @Test
+    @DisplayName("OrderDto리스트를 잘 반환하는지 확인한다.")
+    void testConvertToOrderDtos(){
+        Orders orders = new Orders();
+        Order firstOrder = new Order(Menu.RED_WINE,new MenuQuantity(3));
+        Order secondOrder = new Order(Menu.ZERO_COLA,new MenuQuantity(2));
+        orders.record(firstOrder);
+        orders.record(secondOrder);
+
+        List<OrderDto> orderDtos = orders.convertToOrderDtos();
+
+        assertThat(orderDtos.size()).isEqualTo(2);
     }
 
 }
