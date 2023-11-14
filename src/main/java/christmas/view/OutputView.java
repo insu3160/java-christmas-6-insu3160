@@ -18,6 +18,7 @@ public class OutputView {
     private static final String GIFT_MENU_TITLE = "<증정 메뉴>";
     private static final String BENEFIT_SECTION_TITLE = "<혜택 내역>";
     private static final String DISCOUNT_FORMAT = "%s: %,d원%n";
+    private static final String TOTAL_DISCOUNT_SECTION_TITLE = "<총혜택 금액>";
     private static final int ZERO_DISCOUNT = 0;
 
     public static void welcomeEventPlanner() {
@@ -70,6 +71,12 @@ public class OutputView {
             benefitStringBuilder.append(Event.NOTHING.getEventName());
         }
         System.out.println(benefitStringBuilder);
+    }
+
+    public static void displayTotalDiscount(int totalDiscount) {
+        System.out.println(TOTAL_DISCOUNT_SECTION_TITLE);
+        System.out.println(String.format(PRICE_FORMAT_WITH_COMMA, totalDiscount));
+
     }
 
 }
