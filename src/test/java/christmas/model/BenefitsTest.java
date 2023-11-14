@@ -50,4 +50,18 @@ class BenefitsTest {
         assertThat(benefitDtos.size()).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("총 혜택 금액을 올바르게 반환하는지 확인한다.")
+    void testCalculateTotalDiscount() {
+        Benefits benefits = new Benefits();
+
+        Benefit giftBenefit = new Benefit(Event.GIFT, -2023);
+        Benefit weekDayBenefit = new Benefit(Event.WEEKDAY, -2023);
+
+        benefits.add(giftBenefit);
+        benefits.add(weekDayBenefit);
+
+        assertThat(benefits.calculateTotalDiscount()).isEqualTo(-4046);
+    }
+
 }
