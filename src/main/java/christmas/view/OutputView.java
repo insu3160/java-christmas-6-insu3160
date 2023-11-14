@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.enums.GiftMenu;
 import christmas.service.dto.OrderDto;
 import christmas.service.dto.TotalOrderAmountDto;
 import christmas.service.dto.VisitDateDto;
@@ -12,6 +13,7 @@ public class OutputView {
     private static final String ORDER_FORMAT = "%s %d개";
     private final static String BEFORE_BENEFIT_PRICE = "<할인 전 총주문 금액>";
     private static final String PRICE_FORMAT_WITH_COMMA = "%,d원%n";
+    private static final String GIFT_MENU_TITLE = "<증정 메뉴>";
 
     public static void welcomeEventPlanner() {
         System.out.println(WELCOME_MESSAGE);
@@ -37,11 +39,16 @@ public class OutputView {
     public static void displayBeforeBenefitAmount(TotalOrderAmountDto totalOrderAmount) {
         printEmptyLine();
         System.out.println(BEFORE_BENEFIT_PRICE);
-        System.out.printf(PRICE_FORMAT_WITH_COMMA, totalOrderAmount.totalOrderAmount());
+        System.out.println(String.format(PRICE_FORMAT_WITH_COMMA, totalOrderAmount.totalOrderAmount()));
     }
 
     private static void printEmptyLine() {
         System.out.println();
+    }
+
+    public static void displayGiftMenu(GiftMenu giftMenu) {
+        System.out.println(GIFT_MENU_TITLE);
+        System.out.println(giftMenu.getGiftMenu());
     }
 
 }

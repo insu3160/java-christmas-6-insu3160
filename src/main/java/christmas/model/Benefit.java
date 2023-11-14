@@ -19,4 +19,8 @@ public class Benefit {
         return discount;
     }
 
+    public boolean matchedEvent(Event event) {
+        return this.event.equals(event);
+    }
+
 }

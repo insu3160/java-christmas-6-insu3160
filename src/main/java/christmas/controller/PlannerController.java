@@ -19,6 +19,11 @@ public class PlannerController {
     public void run() {
         EventManager eventHandler = initEventManager();
         Benefits benefits = eventHandler.calculateBenefits();
+        displayBenefitPlanner(benefits);
+    }
+
+    private void displayBenefitPlanner(Benefits benefits) {
+        OutputView.displayGiftMenu(benefits.getGiftMenu());
     }
 
     private EventManager initEventManager() {
