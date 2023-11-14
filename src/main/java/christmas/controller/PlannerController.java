@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.model.OrderTotalAmount;
 import christmas.model.Orders;
 import christmas.model.VisitDate;
 import christmas.service.OrderManager;
@@ -18,6 +19,7 @@ public class PlannerController {
         Orders orders = initOrders();
         OutputView.displayEventBenefitsPreview(visitDate.convertToVisitDateDto());
         OutputView.displayOrders(orders.convertToOrdersDto());
+        OrderTotalAmount orderTotalAmount = orderManager.calculateTotalAmount(orders);
     }
 
     private Orders initOrders() {

@@ -45,4 +45,10 @@ public class Orders {
         return orderDtos;
     }
 
+    public int caclulateTotalAmount() {
+        return orders.stream()
+                .mapToInt(Order::caculatePrice)
+                .sum();
+    }
+
 }

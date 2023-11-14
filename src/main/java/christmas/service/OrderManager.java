@@ -4,6 +4,7 @@ import christmas.contants.ErrorMessages;
 import christmas.enums.Menu;
 import christmas.model.MenuQuantity;
 import christmas.model.Order;
+import christmas.model.OrderTotalAmount;
 import christmas.model.Orders;
 import christmas.utils.Converter;
 
@@ -51,6 +52,10 @@ public class OrderManager {
             throw new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
         }
 
+    }
+
+    public OrderTotalAmount calculateTotalAmount(Orders orders) {
+        return new OrderTotalAmount(orders.caclulateTotalAmount());
     }
 
 }

@@ -43,4 +43,8 @@ public class Order {
         return new OrderDto(menu, menuQuantity.getMenuQuantity());
     }
 
+    public int caculatePrice() {
+        return this.menu.getPrice() * getMenuQuantity();
+    }
+
 }
