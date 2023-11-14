@@ -7,7 +7,7 @@ public class Converter {
         try {
             return Integer.parseInt(inputNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessages.NON_NUMERIC_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
         }
     }
 
