@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.enums.Event;
+import christmas.enums.EventBadge;
 import christmas.enums.GiftMenu;
 import christmas.service.dto.BenefitDto;
 import christmas.service.dto.OrderDto;
@@ -20,6 +21,7 @@ public class OutputView {
     private static final String DISCOUNT_FORMAT = "%s: %,d원%n";
     private static final String TOTAL_DISCOUNT_SECTION_TITLE = "<총혜택 금액>";
     private static final String FINAL_PAYMENT_AMOUNT_TITLE = "<할인 후 예상 결제 금액>";
+    private static final String DECEMBER_EVENT_BADGE_TITLE = "<12월 이벤트 배지>";
     private static final int ZERO_DISCOUNT = 0;
 
     public static void welcomeEventPlanner() {
@@ -84,5 +86,10 @@ public class OutputView {
         System.out.println(FINAL_PAYMENT_AMOUNT_TITLE);
         System.out.println(String.format(PRICE_FORMAT_WITH_COMMA, finalPaymentAmount));
     }
-    
+
+    public static void displayDecemberEventBadge(EventBadge eventBadge) {
+        System.out.println(DECEMBER_EVENT_BADGE_TITLE);
+        System.out.println(eventBadge.getDescription());
+    }
+
 }

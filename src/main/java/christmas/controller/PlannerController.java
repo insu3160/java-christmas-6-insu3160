@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.enums.EventBadge;
 import christmas.model.Benefits;
 import christmas.model.Orders;
 import christmas.model.TotalOrderAmount;
@@ -29,6 +30,8 @@ public class PlannerController {
 
         OutputView.displayFinalPaymentAmount(
                 eventManager.calculateFinalPaymentAmount(totalDiscount, benefits.getGiftMenu()));
+
+        OutputView.displayDecemberEventBadge(EventBadge.calculateEventBadge(totalDiscount));
     }
 
     private void displayBenefitPlanner(Benefits benefits) {
