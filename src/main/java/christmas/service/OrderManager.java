@@ -11,6 +11,7 @@ public class OrderManager {
     private static final String ITEM_SEPARATOR = "-";
     private final static int MENU_NAME_INDEX = 0;
     private final static int MENU_QUANTITY_INDEX = 1;
+    private final static int ORDER_PARTS = 2;
 
     public Orders recordOrders(String[] inputOrders) {
         Orders orders = new Orders();
@@ -39,9 +40,17 @@ public class OrderManager {
     }
 
     private Order createOrder(String[] order) {
+        checkMenuFormatValidity(order);
         Menu menu = Menu.findMenu(order[MENU_NAME_INDEX]);
         MenuQuantity menuQuantity = new MenuQuantity(Converter.stringToInt(order[MENU_QUANTITY_INDEX]));
         return new Order(menu, menuQuantity);
+    }
+
+    private void checkMenuFormatValidity(String[] order) {
+        if (order.length != ORDER_PARTS) {
+            throw new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
+        }
+
     }
 
 }
