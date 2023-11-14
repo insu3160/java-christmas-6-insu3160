@@ -23,6 +23,13 @@ public class OrderManager {
 
     private void validate(Orders orders) {
         checkTotalQuantity(orders);
+        checkOnlyBeverage(orders);
+    }
+
+    private void checkOnlyBeverage(Orders orders) {
+        if (orders.hasOnlyBeverages()) {
+            throw new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
+        }
     }
 
     private void checkTotalQuantity(Orders orders) {

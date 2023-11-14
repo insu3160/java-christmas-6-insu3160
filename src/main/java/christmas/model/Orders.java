@@ -1,6 +1,7 @@
 package christmas.model;
 
 import christmas.contants.ErrorMessages;
+import christmas.enums.Category;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,10 @@ public class Orders {
         return orders.stream()
                 .mapToInt(Order::getMenuQuantity)
                 .sum() > MENU_QUANTITY_LIMIT;
+    }
+
+    public boolean hasOnlyBeverages() {
+        return orders.stream().allMatch(order -> order.matchedCategory(Category.BEVERAGE));
     }
 
 }
