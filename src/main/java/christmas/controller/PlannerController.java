@@ -18,7 +18,7 @@ public class PlannerController {
         VisitDate visitDate = initVisitDate();
         Orders orders = initOrders();
         OutputView.displayEventBenefitsPreview(visitDate.convertToVisitDateDto());
-        OutputView.displayOrders(orders.convertToOrdersDto());
+        OutputView.displayOrders(orders.convertToOrderDtos());
         OrderTotalAmount orderTotalAmount = orderManager.calculateTotalAmount(orders);
     }
 

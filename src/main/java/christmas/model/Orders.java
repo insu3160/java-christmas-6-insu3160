@@ -35,7 +35,7 @@ public class Orders {
         return orders.stream().allMatch(order -> order.matchedCategory(Category.BEVERAGE));
     }
 
-    public List<OrderDto> convertToOrdersDto() {
+    public List<OrderDto> convertToOrderDtos() {
         List<OrderDto> orderDtos = new ArrayList<>();
         for (Order order : orders) {
             OrderDto orderDto = order.convertToOrderDto();
