@@ -34,4 +34,10 @@ public class Benefits {
         return benefitDtos;
     }
 
+    public int calculateTotalDiscount() {
+        return benefits.stream()
+                .mapToInt(Benefit::getDiscount)
+                .sum();
+    }
+
 }

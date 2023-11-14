@@ -57,7 +57,7 @@
 >   + [X] 이벤트에 참여할 수 있는 지 확인하는 기능.
 > + Benefit-Event enum과 할인가격을 가지고 있는 역할.
 > + Benefits-Benfit클래스를 리스트로 가지고 있는 역할.
->   + [ ] 총 혜택 금액을 계산하는 기능.
+>   + [X] 총 혜택 금액을 계산하는 기능.
 
 > ### controller
 > + PlannerController-planner작성의 전반적인 진행을 담당하는 역할.

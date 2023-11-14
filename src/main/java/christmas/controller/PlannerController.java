@@ -20,6 +20,11 @@ public class PlannerController {
         EventManager eventHandler = initEventManager();
         Benefits benefits = eventHandler.calculateBenefits();
         displayBenefitPlanner(benefits);
+        displayPaymentAmount(eventHandler, benefits);
+    }
+
+    private void displayPaymentAmount(EventManager eventHandler, Benefits benefits) {
+        int totalDiscount = benefits.calculateTotalDiscount();
     }
 
     private void displayBenefitPlanner(Benefits benefits) {
