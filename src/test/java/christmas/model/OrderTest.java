@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.enums.Category;
 import christmas.enums.Menu;
+import christmas.service.dto.OrderDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +28,18 @@ class OrderTest {
         Order firstOrder = new Order(menu, firstQuantity);
 
         assertThat(firstOrder.matchedCategory(Category.BEVERAGE)).isTrue();
+    }
+    @Test
+    @DisplayName("OrderDto를 잘 반환하는지 확인한다.")
+    void testConvertToOrderDto(){
+        Menu menu = Menu.CHAMPAGNE;
+        MenuQuantity firstQuantity = new MenuQuantity(3);
+        Order firstOrder = new Order(menu, firstQuantity);
+
+        OrderDto firstOrderDto = firstOrder.convertToOrderDto();
+
+        assertThat(firstOrderDto.menu()).isEqualTo(menu);
+        assertThat(firstOrderDto.menuQuantity()).isEqualTo(3);
     }
 
 }
