@@ -52,7 +52,7 @@
 >   + [ ] 메인 메뉴의 개수를 반환하는 기능.
 >     + 예외 처리
 >       + [X] 중복 메뉴를 입력한 경우 예외 처리하는 기능. 
-> + OrderPrice-할인 전 총 주문 금액을 상태로 가지고 있는 역할.
+> + TotalOrderAmount-할인 전 총 주문 금액을 상태로 가지고 있는 역할.
 >   + [ ] 특별 할인을 받을 수 있는 지 확인하는 기능.
 >   + [ ] 이벤트에 참여할 수 있는 지 확인하는 기능.
 > + Benefit-Event enum과 할인가격을 가지고 있는 역할.
@@ -63,7 +63,7 @@
 > + PlannerController-planner작성의 전반적인 진행을 담당하는 역할.
 
 > ### service
-> + EventHandler
+> + EventManager
 >   + [ ] benefits리스트에 각각의 이벤트에 대한 benfit을 저장하는 기능.
 >   + [ ] 증정 이벤트의 유무에 따라 최종 금액을 반환하는 기능.
 > + OrderManager
