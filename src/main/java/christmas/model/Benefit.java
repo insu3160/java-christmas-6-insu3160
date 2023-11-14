@@ -1,6 +1,7 @@
 package christmas.model;
 
 import christmas.enums.Event;
+import christmas.service.dto.BenefitDto;
 
 public class Benefit {
     private final Event event;
@@ -21,6 +22,10 @@ public class Benefit {
 
     public boolean matchedEvent(Event event) {
         return this.event.equals(event);
+    }
+
+    public BenefitDto convertToBenefitDto() {
+        return new BenefitDto(event, discount);
     }
 
 }

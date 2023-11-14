@@ -24,6 +24,7 @@ public class PlannerController {
 
     private void displayBenefitPlanner(Benefits benefits) {
         OutputView.displayGiftMenu(benefits.getGiftMenu());
+        OutputView.displayBenefitDetails(benefits.convertToBenefitDtos());
     }
 
     private EventManager initEventManager() {

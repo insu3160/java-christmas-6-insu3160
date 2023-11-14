@@ -2,6 +2,7 @@ package christmas.model;
 
 import christmas.enums.Event;
 import christmas.enums.GiftMenu;
+import christmas.service.dto.BenefitDto;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,15 @@ public class Benefits {
             return GiftMenu.GIFT_MENU;
         }
         return GiftMenu.NONE;
+    }
+
+    public List<BenefitDto> convertToBenefitDtos() {
+        List<BenefitDto> benefitDtos = new ArrayList<>();
+        for (Benefit benefit : benefits) {
+            BenefitDto benefitDto = benefit.convertToBenefitDto();
+            benefitDtos.add(benefitDto);
+        }
+        return benefitDtos;
     }
 
 }
