@@ -2,6 +2,7 @@ package christmas.model;
 
 import christmas.contants.ErrorMessages;
 import christmas.enums.Category;
+import christmas.service.dto.OrderDto;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,16 @@ public class Orders {
 
     public boolean hasOnlyBeverages() {
         return orders.stream().allMatch(order -> order.matchedCategory(Category.BEVERAGE));
+    }
+
+    public List<OrderDto> convertToOrdersDto() {
+        List<OrderDto> orderDtos = new ArrayList<>();
+        for (Order order : orders) {
+            OrderDto orderDto = order.convertToOrderDto();
+            orderDtos.add(orderDto);
+        }
+
+        return orderDtos;
     }
 
 }

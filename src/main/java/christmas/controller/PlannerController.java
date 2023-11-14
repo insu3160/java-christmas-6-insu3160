@@ -17,6 +17,7 @@ public class PlannerController {
         VisitDate visitDate = initVisitDate();
         Orders orders = initOrders();
         OutputView.displayEventBenefitsPreview(visitDate.convertToVisitDateDto());
+        OutputView.displayOrders(orders.convertToOrdersDto());
     }
 
     private Orders initOrders() {

@@ -2,6 +2,7 @@ package christmas.model;
 
 import christmas.enums.Category;
 import christmas.enums.Menu;
+import christmas.service.dto.OrderDto;
 import java.util.Objects;
 
 public class Order {
@@ -36,6 +37,10 @@ public class Order {
 
     public boolean matchedCategory(Category category) {
         return this.menu.getCategory().equals(category);
+    }
+
+    public OrderDto convertToOrderDto() {
+        return new OrderDto(menu, menuQuantity.getMenuQuantity());
     }
 
 }
