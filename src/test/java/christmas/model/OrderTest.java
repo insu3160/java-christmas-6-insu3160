@@ -41,5 +41,14 @@ class OrderTest {
         assertThat(firstOrderDto.menu()).isEqualTo(menu);
         assertThat(firstOrderDto.menuQuantity()).isEqualTo(3);
     }
+    @Test
+    @DisplayName("메뉴마다의 총가격을 잘 반환하는지 확인한다.")
+    void testCalculatePrice(){
+        Menu menu = Menu.CHAMPAGNE;
+        MenuQuantity firstQuantity = new MenuQuantity(3);
+        Order firstOrder = new Order(menu, firstQuantity);
+
+        assertThat(firstOrder.caculatePrice()).isEqualTo(Menu.CHAMPAGNE.getPrice()*firstQuantity.getMenuQuantity());
+    }
 
 }
