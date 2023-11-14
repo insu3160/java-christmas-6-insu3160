@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.enums.Event;
 import christmas.enums.GiftMenu;
+import christmas.service.dto.BenefitDto;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +32,22 @@ class BenefitsTest {
         GiftMenu result = benefits.getGiftMenu();
 
         assertThat(result).isEqualTo(GiftMenu.NONE);
+    }
+
+    @Test
+    @DisplayName("BenefitDto리스트를 잘 반환하는지 확인한다.")
+    void testConvertToBenefitDtos() {
+        Benefits benefits = new Benefits();
+
+        Benefit giftBenefit = new Benefit(Event.GIFT, -2023);
+        Benefit weekDayBenefit = new Benefit(Event.WEEKDAY, -2023);
+
+        benefits.add(giftBenefit);
+        benefits.add(weekDayBenefit);
+
+        List<BenefitDto> benefitDtos = benefits.convertToBenefitDtos();
+
+        assertThat(benefitDtos.size()).isEqualTo(2);
     }
 
 }
