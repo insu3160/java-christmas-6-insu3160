@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.model.Orders;
 import christmas.model.TotalOrderAmount;
 import christmas.model.VisitDate;
+import christmas.service.EventManager;
 import christmas.service.OrderManager;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -15,12 +16,19 @@ public class PlannerController {
     }
 
     public void run() {
+        EventManager eventHandler = initEventManager();
+    }
+
+    private EventManager initEventManager() {
         VisitDate visitDate = initVisitDate();
         Orders orders = initOrders();
         OutputView.displayEventBenefitsPreview(visitDate.convertToVisitDateDto());
         OutputView.displayOrders(orders.convertToOrderDtos());
+
         TotalOrderAmount totalOrderAmount = orderManager.calculateTotalAmount(orders);
         OutputView.displayBeforeBenefitAmount(totalOrderAmount.convertToTotalOrderAmountDto());
+
+        return new EventManager(visitDate, orders, totalOrderAmount);
     }
 
     private Orders initOrders() {
