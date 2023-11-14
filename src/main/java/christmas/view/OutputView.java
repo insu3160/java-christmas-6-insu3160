@@ -19,6 +19,7 @@ public class OutputView {
     private static final String BENEFIT_SECTION_TITLE = "<혜택 내역>";
     private static final String DISCOUNT_FORMAT = "%s: %,d원%n";
     private static final String TOTAL_DISCOUNT_SECTION_TITLE = "<총혜택 금액>";
+    private static final String FINAL_PAYMENT_AMOUNT_TITLE = "<할인 후 예상 결제 금액>";
     private static final int ZERO_DISCOUNT = 0;
 
     public static void welcomeEventPlanner() {
@@ -79,4 +80,9 @@ public class OutputView {
 
     }
 
+    public static void displayFinalPaymentAmount(int finalPaymentAmount) {
+        System.out.println(FINAL_PAYMENT_AMOUNT_TITLE);
+        System.out.println(String.format(PRICE_FORMAT_WITH_COMMA, finalPaymentAmount));
+    }
+    
 }

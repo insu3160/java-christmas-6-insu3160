@@ -23,4 +23,8 @@ public class TotalOrderAmount {
         return this.totalOrderAmount >= MIN_ORDER_AMOUNT_FOR_CHAMPAGNE;
     }
 
+    public int getTotalOrderAmount() {
+        return totalOrderAmount;
+    }
+
 }

@@ -26,6 +26,9 @@ public class PlannerController {
     private void displayPaymentAmount(EventManager eventManager, Benefits benefits) {
         int totalDiscount = benefits.calculateTotalDiscount();
         OutputView.displayTotalDiscount(totalDiscount);
+
+        OutputView.displayFinalPaymentAmount(
+                eventManager.calculateFinalPaymentAmount(totalDiscount, benefits.getGiftMenu()));
     }
 
     private void displayBenefitPlanner(Benefits benefits) {

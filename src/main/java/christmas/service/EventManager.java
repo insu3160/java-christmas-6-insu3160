@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.enums.GiftMenu;
 import christmas.model.Benefits;
 import christmas.model.Orders;
 import christmas.model.TotalOrderAmount;
@@ -26,6 +27,10 @@ public class EventManager {
             benefits.add(EventCalculator.calculatGiftEvent(totalOrderAmount));
         }
         return benefits;
+    }
+
+    public int calculateFinalPaymentAmount(int totalDiscount, GiftMenu giftMenu) {
+        return totalOrderAmount.getTotalOrderAmount() + totalDiscount + giftMenu.getGiftMenuMoney();
     }
 
 }
