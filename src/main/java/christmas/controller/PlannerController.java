@@ -17,13 +17,13 @@ public class PlannerController {
     }
 
     public void run() {
-        EventManager eventHandler = initEventManager();
-        Benefits benefits = eventHandler.calculateBenefits();
+        EventManager eventManager = initEventManager();
+        Benefits benefits = eventManager.calculateBenefits();
         displayBenefitPlanner(benefits);
-        displayPaymentAmount(eventHandler, benefits);
+        displayPaymentAmount(eventManager, benefits);
     }
 
-    private void displayPaymentAmount(EventManager eventHandler, Benefits benefits) {
+    private void displayPaymentAmount(EventManager eventManager, Benefits benefits) {
         int totalDiscount = benefits.calculateTotalDiscount();
         OutputView.displayTotalDiscount(totalDiscount);
     }
