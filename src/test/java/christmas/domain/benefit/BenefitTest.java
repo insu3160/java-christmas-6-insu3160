@@ -23,8 +23,9 @@ class BenefitTest {
         Benefit benefit = new Benefit(Event.CHRISTMAS, -2023);
         BenefitDto benefitDto = benefit.convertToBenefitDto();
 
-        assertThat(benefitDto.event()).isEqualTo(Event.CHRISTMAS);
-        assertThat(benefitDto.discount()).isEqualTo(-2023);
+        assertThat(benefitDto)
+                .extracting(BenefitDto::event, BenefitDto::discount)
+                .containsExactly(Event.CHRISTMAS, -2023);
     }
 
 }
