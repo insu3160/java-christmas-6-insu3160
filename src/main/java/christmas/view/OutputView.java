@@ -13,7 +13,7 @@ public class OutputView {
     private static final String WELCOME_MESSAGE = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
     private static final String EVENT_BENEFITS_DATE_MESSAGE = "%d월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!%n";
     private static final String ORDER_MENU_TITLE = "<주문 메뉴>";
-    private static final String ORDER_FORMAT = "%s %d개";
+    private static final String ORDER_FORMAT = "%s %d개%n";
     private static final String BEFORE_BENEFIT_PRICE = "<할인 전 총주문 금액>";
     private static final String PRICE_FORMAT_WITH_COMMA = "%,d원%n";
     private static final String GIFT_MENU_TITLE = "<증정 메뉴>";
@@ -40,13 +40,13 @@ public class OutputView {
 
     public static void displayOrders(List<OrderDto> orderDtos) {
         System.out.println(ORDER_MENU_TITLE);
-        for (OrderDto orderDto : orderDtos) {
-            System.out.println(String.format(ORDER_FORMAT, orderDto.menu().getMenuName(), orderDto.menuQuantity()));
-        }
+        StringBuilder orderStringBuilder = new StringBuilder();
+        orderDtos.forEach(orderDto -> orderStringBuilder.append(
+                String.format(ORDER_FORMAT, orderDto.menu().getMenuName(), orderDto.menuQuantity())));
+        System.out.println(orderStringBuilder);
     }
 
     public static void displayBeforeBenefitAmount(TotalOrderAmountDto totalOrderAmount) {
-        printEmptyLine();
         System.out.println(BEFORE_BENEFIT_PRICE);
         System.out.println(String.format(PRICE_FORMAT_WITH_COMMA, totalOrderAmount.totalOrderAmount()));
     }
@@ -64,15 +64,16 @@ public class OutputView {
         printEmptyLine();
         System.out.println(BENEFIT_SECTION_TITLE);
         StringBuilder benefitStringBuilder = new StringBuilder();
-        for (BenefitDto benefitDto : benefitDtos) {
-            if (benefitDto.discount() != ZERO_DISCOUNT) {
-                benefitStringBuilder.append(
-                        String.format(DISCOUNT_FORMAT, benefitDto.event().getEventName(), benefitDto.discount()));
-            }
-        }
+
+        benefitDtos.stream()
+                .filter(benefitDto -> benefitDto.discount() != ZERO_DISCOUNT)
+                .forEach(benefitDto -> benefitStringBuilder.append(
+                        String.format(DISCOUNT_FORMAT, benefitDto.event().getEventName(), benefitDto.discount())));
+
         if (benefitStringBuilder.isEmpty()) {
             benefitStringBuilder.append(Event.NOTHING.getEventName()).append("\n");
         }
+
         System.out.println(benefitStringBuilder);
     }
 
