@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.domain.visitdate;
 
 import christmas.contants.ErrorMessages;
 import christmas.service.dto.VisitDateDto;

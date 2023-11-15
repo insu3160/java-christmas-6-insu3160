@@ -1,10 +1,10 @@
 package christmas.service;
 
+import christmas.domain.benefit.Benefits;
+import christmas.domain.order.Orders;
+import christmas.domain.order.TotalOrderAmount;
+import christmas.domain.visitdate.VisitDate;
 import christmas.enums.GiftMenu;
-import christmas.model.Benefits;
-import christmas.model.Orders;
-import christmas.model.TotalOrderAmount;
-import christmas.model.VisitDate;
 import christmas.utils.EventCalculator;
 
 public class EventManager {

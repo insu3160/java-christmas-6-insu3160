@@ -1,11 +1,11 @@
 package christmas.service;
 
 import christmas.contants.ErrorMessages;
+import christmas.domain.order.MenuQuantity;
+import christmas.domain.order.Order;
+import christmas.domain.order.Orders;
+import christmas.domain.order.TotalOrderAmount;
 import christmas.enums.Menu;
-import christmas.model.MenuQuantity;
-import christmas.model.Order;
-import christmas.model.Orders;
-import christmas.model.TotalOrderAmount;
 import christmas.utils.Converter;
 
 public class OrderManager {

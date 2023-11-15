@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.domain.benefit;
 
 import christmas.enums.Event;
 import christmas.enums.GiftMenu;

@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.domain.order;
 
 import christmas.enums.Category;
 import christmas.enums.Menu;

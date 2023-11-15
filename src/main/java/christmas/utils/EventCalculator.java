@@ -1,11 +1,11 @@
 package christmas.utils;
 
+import christmas.domain.benefit.Benefit;
+import christmas.domain.order.Orders;
+import christmas.domain.order.TotalOrderAmount;
+import christmas.domain.visitdate.VisitDate;
 import christmas.enums.Event;
 import christmas.enums.GiftMenu;
-import christmas.model.Benefit;
-import christmas.model.Orders;
-import christmas.model.TotalOrderAmount;
-import christmas.model.VisitDate;
 
 public class EventCalculator {
     private static final int MAX_CHRISTMAS_EVENT_DISCOUNT = -3400;
