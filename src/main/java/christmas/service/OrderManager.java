@@ -10,9 +10,9 @@ import christmas.utils.Converter;
 
 public class OrderManager {
     private static final String ITEM_SEPARATOR = "-";
-    private final static int MENU_NAME_INDEX = 0;
-    private final static int MENU_QUANTITY_INDEX = 1;
-    private final static int ORDER_PARTS = 2;
+    private static final int MENU_NAME_INDEX = 0;
+    private static final int MENU_QUANTITY_INDEX = 1;
+    private static final int ORDER_PARTS = 2;
 
     public Orders recordOrders(String[] inputOrders) {
         Orders orders = new Orders();

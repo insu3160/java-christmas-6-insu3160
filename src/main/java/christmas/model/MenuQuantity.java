@@ -3,7 +3,7 @@ package christmas.model;
 import christmas.contants.ErrorMessages;
 
 public class MenuQuantity {
-    private final static int MIN_MENU_QUANTITY = 1;
+    private static final int MIN_MENU_QUANTITY = 1;
     private final int menuQuantity;
 
     public MenuQuantity(int menuQuantity) {
