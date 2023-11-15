@@ -7,19 +7,24 @@ import christmas.contants.ErrorMessages;
 import christmas.enums.Menu;
 import christmas.service.dto.OrderDto;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class OrdersTest {
+    private Orders orders;
+
+    @BeforeEach
+    void setUp() {
+        orders = new Orders();
+    }
+
     @Test
     @DisplayName("중복된 메뉴가 추가 될 시 예외 처리한다.")
     void testRecordDuplicateOrder() {
-        Orders orders = new Orders();
-        Order firstOrder = new Order(Menu.BBQ_RIBS, new MenuQuantity(2));
-        Order secondOrder = new Order(Menu.BBQ_RIBS, new MenuQuantity(1));
-        orders.record(firstOrder);
+        recordOrder(Menu.BBQ_RIBS, 2);
 
-        assertThatThrownBy(() -> orders.record(secondOrder))
+        assertThatThrownBy(() -> recordOrder(Menu.BBQ_RIBS, 3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
     }
@@ -27,11 +32,8 @@ class OrdersTest {
     @Test
     @DisplayName("총 메뉴 갯수가 20개 초과이면 true를 반환한다.")
     void testIsOverMenuQuantityLimit() {
-        Orders orders = new Orders();
-        Order firstOrder = new Order(Menu.BBQ_RIBS, new MenuQuantity(15));
-        Order secondOrder = new Order(Menu.RED_WINE, new MenuQuantity(6));
-        orders.record(firstOrder);
-        orders.record(secondOrder);
+        recordOrder(Menu.BBQ_RIBS, 15);
+        recordOrder(Menu.RED_WINE, 6);
 
         assertThat(orders.isOverMenuQuantityLimit()).isTrue();
     }
@@ -39,11 +41,8 @@ class OrdersTest {
     @Test
     @DisplayName("음료만 있으면 true를 반환한다.")
     void testHasOnlyBeverages() {
-        Orders orders = new Orders();
-        Order firstOrder = new Order(Menu.RED_WINE, new MenuQuantity(3));
-        Order secondOrder = new Order(Menu.ZERO_COLA, new MenuQuantity(2));
-        orders.record(firstOrder);
-        orders.record(secondOrder);
+        recordOrder(Menu.RED_WINE, 2);
+        recordOrder(Menu.ZERO_COLA, 2);
 
         assertThat(orders.hasOnlyBeverages()).isTrue();
     }
@@ -51,11 +50,8 @@ class OrdersTest {
     @Test
     @DisplayName("OrderDto리스트를 잘 반환하는지 확인한다.")
     void testConvertToOrderDtos() {
-        Orders orders = new Orders();
-        Order firstOrder = new Order(Menu.RED_WINE, new MenuQuantity(3));
-        Order secondOrder = new Order(Menu.ZERO_COLA, new MenuQuantity(2));
-        orders.record(firstOrder);
-        orders.record(secondOrder);
+        recordOrder(Menu.RED_WINE, 15);
+        recordOrder(Menu.ZERO_COLA, 2);
 
         List<OrderDto> orderDtos = orders.convertToOrderDtos();
 
@@ -65,11 +61,8 @@ class OrdersTest {
     @Test
     @DisplayName("주문에 대한 총 가격을 잘 반환하는지 확인한다.")
     void testCalculateTotalAmount() {
-        Orders orders = new Orders();
-        Order firstOrder = new Order(Menu.CAESAR_SALAD, new MenuQuantity(3));
-        Order secondOrder = new Order(Menu.ZERO_COLA, new MenuQuantity(2));
-        orders.record(firstOrder);
-        orders.record(secondOrder);
+        recordOrder(Menu.CAESAR_SALAD, 3);
+        recordOrder(Menu.ZERO_COLA, 2);
 
         int totalAmount = Menu.CAESAR_SALAD.getPrice() * 3 + Menu.ZERO_COLA.getPrice() * 2;
 
@@ -79,29 +72,27 @@ class OrdersTest {
     @Test
     @DisplayName("메인 메뉴의 갯수를 잘 반환하는지 확인한다.")
     void testCountMainMenu() {
-        Orders orders = new Orders();
-        Order firstOrder = new Order(Menu.T_BONE_STEAK, new MenuQuantity(1));
-        Order secondOrder = new Order(Menu.ZERO_COLA, new MenuQuantity(2));
-        Order thirdOrder = new Order(Menu.BBQ_RIBS, new MenuQuantity(2));
-        orders.record(firstOrder);
-        orders.record(secondOrder);
-        orders.record(thirdOrder);
+        recordOrder(Menu.T_BONE_STEAK, 3);
+        recordOrder(Menu.ZERO_COLA, 2);
+        recordOrder(Menu.BBQ_RIBS, 2);
 
-        assertThat(orders.countMainMenu()).isEqualTo(3);
+        assertThat(orders.countMainMenu()).isEqualTo(5);
     }
 
     @Test
     @DisplayName("디저트 메뉴의 갯수를 잘 반환하는지 확인한다.")
     void testCountDesertMenu() {
-        Orders orders = new Orders();
-        Order firstOrder = new Order(Menu.CHOCO_CAKE, new MenuQuantity(2));
-        Order secondOrder = new Order(Menu.ICE_CREAM, new MenuQuantity(2));
-        Order thirdOrder = new Order(Menu.BBQ_RIBS, new MenuQuantity(2));
-        orders.record(firstOrder);
-        orders.record(secondOrder);
-        orders.record(thirdOrder);
+        recordOrder(Menu.CHOCO_CAKE, 2);
+        recordOrder(Menu.ICE_CREAM, 2);
+        recordOrder(Menu.BBQ_RIBS, 2);
 
         assertThat(orders.countDesertMenu()).isEqualTo(4);
+    }
+
+    private Order recordOrder(Menu menu, int quantity) {
+        Order order = new Order(menu, new MenuQuantity(quantity));
+        orders.record(order);
+        return order;
     }
 
 }
