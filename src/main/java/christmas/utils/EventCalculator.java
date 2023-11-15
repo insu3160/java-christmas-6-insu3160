@@ -4,6 +4,7 @@ import christmas.domain.benefit.Benefit;
 import christmas.domain.order.Orders;
 import christmas.domain.order.TotalOrderAmount;
 import christmas.domain.visitdate.VisitDate;
+import christmas.enums.Category;
 import christmas.enums.Event;
 import christmas.enums.GiftMenu;
 
@@ -27,11 +28,11 @@ public class EventCalculator {
     public static Benefit calculateDailyEvent(VisitDate visitDate, Orders orders) {
         int discount = DISCOUNT_DEFAULT;
         if (visitDate.isWeekend()) {
-            int mainMenuCount = orders.countMainMenu();
+            int mainMenuCount = orders.countMenuCategory(Category.MAIN);
             discount = DAILY_EVENT_DISCOUNT * mainMenuCount;
             return new Benefit(Event.WEEKEND, discount);
         }
-        int desertMenuCount = orders.countDesertMenu();
+        int desertMenuCount = orders.countMenuCategory(Category.DESSERT);
         discount = DAILY_EVENT_DISCOUNT * desertMenuCount;
         return new Benefit(Event.WEEKDAY, discount);
     }

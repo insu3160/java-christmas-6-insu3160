@@ -50,16 +50,9 @@ public class Orders {
                 .sum();
     }
 
-    public int countMainMenu() {
+    public int countMenuCategory(Category category) {
         return orders.stream()
-                .filter(order -> order.matchedCategory(Category.MAIN))
-                .mapToInt(Order::getMenuQuantity)
-                .sum();
-    }
-
-    public int countDesertMenu() {
-        return orders.stream()
-                .filter(order -> order.matchedCategory(Category.DESSERT))
+                .filter(order -> order.matchedCategory(category))
                 .mapToInt(Order::getMenuQuantity)
                 .sum();
     }
