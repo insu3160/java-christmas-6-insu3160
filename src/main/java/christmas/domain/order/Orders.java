@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Orders {
     private final static int MENU_QUANTITY_LIMIT = 20;
-    private List<Order> orders = new ArrayList<>();
+    private final List<Order> orders = new ArrayList<>();
 
     public void record(Order order) {
         validate(order);
