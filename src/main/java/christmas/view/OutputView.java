@@ -71,7 +71,7 @@ public class OutputView {
             }
         }
         if (benefitStringBuilder.isEmpty()) {
-            benefitStringBuilder.append(Event.NOTHING.getEventName());
+            benefitStringBuilder.append(Event.NOTHING.getEventName()).append("\n");
         }
         System.out.println(benefitStringBuilder);
     }
