@@ -20,18 +20,20 @@ class OrderTest {
 
         assertThat(firstOrder.equals(secondOrder)).isTrue();
     }
+
     @Test
     @DisplayName("넘겨 받은 카테고리가 일치할 때 true를 반환한다.")
-    void testMatchedCategory(){
+    void testMatchedCategory() {
         Menu menu = Menu.CHAMPAGNE;
         MenuQuantity firstQuantity = new MenuQuantity(3);
         Order firstOrder = new Order(menu, firstQuantity);
 
         assertThat(firstOrder.matchedCategory(Category.BEVERAGE)).isTrue();
     }
+
     @Test
     @DisplayName("OrderDto를 잘 반환하는지 확인한다.")
-    void testConvertToOrderDto(){
+    void testConvertToOrderDto() {
         Menu menu = Menu.CHAMPAGNE;
         MenuQuantity firstQuantity = new MenuQuantity(3);
         Order firstOrder = new Order(menu, firstQuantity);
@@ -41,14 +43,15 @@ class OrderTest {
         assertThat(firstOrderDto.menu()).isEqualTo(menu);
         assertThat(firstOrderDto.menuQuantity()).isEqualTo(3);
     }
+
     @Test
     @DisplayName("메뉴마다의 총가격을 잘 반환하는지 확인한다.")
-    void testCalculatePrice(){
+    void testCalculatePrice() {
         Menu menu = Menu.CHAMPAGNE;
         MenuQuantity firstQuantity = new MenuQuantity(3);
         Order firstOrder = new Order(menu, firstQuantity);
 
-        assertThat(firstOrder.caculatePrice()).isEqualTo(Menu.CHAMPAGNE.getPrice()*firstQuantity.getMenuQuantity());
+        assertThat(firstOrder.caculatePrice()).isEqualTo(Menu.CHAMPAGNE.getPrice() * firstQuantity.getMenuQuantity());
     }
 
 }
