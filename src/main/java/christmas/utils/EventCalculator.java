@@ -52,7 +52,6 @@ public class EventCalculator {
             return new Benefit(Event.GIFT, discount);
         }
         return new Benefit(Event.NOTHING, discount);
-
     }
 
 }

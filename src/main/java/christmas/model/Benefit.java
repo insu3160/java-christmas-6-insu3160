@@ -12,10 +12,6 @@ public class Benefit {
         this.discount = discount;
     }
 
-    public Event getEvent() {
-        return event;
-    }
-
     public int getDiscount() {
         return discount;
     }
