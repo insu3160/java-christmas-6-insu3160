@@ -75,9 +75,10 @@ class OrdersTest {
 
         assertThat(orders.caclulateTotalAmount()).isEqualTo(totalAmount);
     }
+
     @Test
     @DisplayName("메인 메뉴의 갯수를 잘 반환하는지 확인한다.")
-    void testCountMainMenu(){
+    void testCountMainMenu() {
         Orders orders = new Orders();
         Order firstOrder = new Order(Menu.T_BONE_STEAK, new MenuQuantity(1));
         Order secondOrder = new Order(Menu.ZERO_COLA, new MenuQuantity(2));
@@ -88,9 +89,10 @@ class OrdersTest {
 
         assertThat(orders.countMainMenu()).isEqualTo(3);
     }
+
     @Test
     @DisplayName("디저트 메뉴의 갯수를 잘 반환하는지 확인한다.")
-    void testCountDesertMenu(){
+    void testCountDesertMenu() {
         Orders orders = new Orders();
         Order firstOrder = new Order(Menu.CHOCO_CAKE, new MenuQuantity(2));
         Order secondOrder = new Order(Menu.ICE_CREAM, new MenuQuantity(2));
