@@ -36,8 +36,18 @@ class OrderManagerTest {
 
     @Test
     @DisplayName("메뉴에 존재하지 않은 메뉴 입력 시 예외가 발생한다.")
-    void testUnMatchedMenu() {
+    void testValidateThrowsExceptionForUnMatchedMenu() {
         String[] inputOrders = {"햄버거-1"};
+
+        assertThatThrownBy(() -> orderManager.recordOrders(inputOrders))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
+    }
+
+    @Test
+    @DisplayName("음료만 시켰을 경우 예외가 발생한다.")
+    void testValidateThrowsExceptionForOnlyBeverage() {
+        String[] inputOrders = {"제로콜라-1", "레드와인-2"};
 
         assertThatThrownBy(() -> orderManager.recordOrders(inputOrders))
                 .isInstanceOf(IllegalArgumentException.class)
