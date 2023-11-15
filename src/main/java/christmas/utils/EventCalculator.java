@@ -13,9 +13,10 @@ public class EventCalculator {
     private static final int CHRISTMAS_D_DAY_ZERO = 0;
     private static final int DAILY_EVENT_DISCOUNT = -2023;
     private static final int SPECIAL_EVENT_DISCOUNT = -1000;
+    private static final int DISCOUNT_DEFAULT = 0;
 
     public static Benefit calculateChristMasEvent(int Dday) {
-        int discount = 0;
+        int discount = DISCOUNT_DEFAULT;
         if (Dday >= CHRISTMAS_D_DAY_ZERO) {
             discount = MAX_CHRISTMAS_EVENT_DISCOUNT + Dday * DISCOUNT_INCREASE_AMOUNT;
             return new Benefit(Event.CHRISTMAS, discount);
@@ -24,7 +25,7 @@ public class EventCalculator {
     }
 
     public static Benefit calculateDailyEvent(VisitDate visitDate, Orders orders) {
-        int discount = 0;
+        int discount = DISCOUNT_DEFAULT;
         if (visitDate.isWeekend()) {
             int mainMenuCount = orders.countMainMenu();
             discount = DAILY_EVENT_DISCOUNT * mainMenuCount;
@@ -36,7 +37,7 @@ public class EventCalculator {
     }
 
     public static Benefit calculateSpecialEvent(VisitDate visitDate) {
-        int discount = 0;
+        int discount = DISCOUNT_DEFAULT;
         if (visitDate.isSpecialDay()) {
             discount = SPECIAL_EVENT_DISCOUNT;
             return new Benefit(Event.SPECIAL, discount);
@@ -45,7 +46,7 @@ public class EventCalculator {
     }
 
     public static Benefit calculatGiftEvent(TotalOrderAmount totalOrderAmount) {
-        int discount = 0;
+        int discount = DISCOUNT_DEFAULT;
         if (totalOrderAmount.canGetGiftMenu()) {
             discount = -Menu.CHAMPAGNE.getPrice();
             return new Benefit(Event.GIFT, discount);
