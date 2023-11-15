@@ -34,4 +34,14 @@ class OrderManagerTest {
                 .hasMessageContaining(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
     }
 
+    @Test
+    @DisplayName("메뉴에 존재하지 않은 메뉴 입력 시 예외가 발생한다.")
+    void testUnMatchedMenu() {
+        String[] inputOrders = {"햄버거-1"};
+
+        assertThatThrownBy(() -> orderManager.recordOrders(inputOrders))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
+    }
+
 }
