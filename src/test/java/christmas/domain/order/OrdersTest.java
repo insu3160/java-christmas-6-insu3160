@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import christmas.contants.ErrorMessages;
+import christmas.enums.Category;
 import christmas.enums.Menu;
 import christmas.service.dto.OrderDto;
 import java.util.List;
@@ -85,7 +86,7 @@ class OrdersTest {
         recordOrder(Menu.ZERO_COLA, 2);
         recordOrder(Menu.BBQ_RIBS, 2);
 
-        assertThat(orders.countMainMenu()).isEqualTo(5);
+        assertThat(orders.countMenuCategory(Category.MAIN)).isEqualTo(5);
     }
 
     @Test
@@ -95,7 +96,7 @@ class OrdersTest {
         recordOrder(Menu.ICE_CREAM, 2);
         recordOrder(Menu.BBQ_RIBS, 2);
 
-        assertThat(orders.countDesertMenu()).isEqualTo(4);
+        assertThat(orders.countMenuCategory(Category.DESSERT)).isEqualTo(4);
     }
 
     private Order recordOrder(Menu menu, int quantity) {
