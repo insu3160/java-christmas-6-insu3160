@@ -1,7 +1,7 @@
 package christmas.utils;
 
 import christmas.enums.Event;
-import christmas.enums.Menu;
+import christmas.enums.GiftMenu;
 import christmas.model.Benefit;
 import christmas.model.Orders;
 import christmas.model.TotalOrderAmount;
@@ -48,7 +48,7 @@ public class EventCalculator {
     public static Benefit calculatGiftEvent(TotalOrderAmount totalOrderAmount) {
         int discount = DISCOUNT_DEFAULT;
         if (totalOrderAmount.canGetGiftMenu()) {
-            discount = -Menu.CHAMPAGNE.getPrice();
+            discount = -GiftMenu.GIFT_MENU.getGiftMenuMoney();
             return new Benefit(Event.GIFT, discount);
         }
         return new Benefit(Event.NOTHING, discount);
