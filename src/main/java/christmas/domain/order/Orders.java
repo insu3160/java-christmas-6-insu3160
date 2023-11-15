@@ -12,7 +12,7 @@ public class Orders {
 
     public void record(Order order) {
         validate(order);
-        orders.add(order);
+        this.orders.add(order);
     }
 
     private void validate(Order order) {

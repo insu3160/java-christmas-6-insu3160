@@ -36,7 +36,7 @@ public class Order {
     }
 
     public boolean matchedCategory(Category category) {
-        return this.menu.getCategory().equals(category);
+        return menu.getCategory().equals(category);
     }
 
     public OrderDto convertToOrderDto() {
@@ -44,7 +44,7 @@ public class Order {
     }
 
     public int caculatePrice() {
-        return this.menu.getPrice() * getMenuQuantity();
+        return menu.getPrice() * getMenuQuantity();
     }
 
 }

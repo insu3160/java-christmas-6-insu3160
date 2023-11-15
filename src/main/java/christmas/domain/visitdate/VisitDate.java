@@ -27,7 +27,7 @@ public class VisitDate {
     }
 
     public VisitDateDto convertToVisitDateDto() {
-        return new VisitDateDto(this.visitDate);
+        return new VisitDateDto(visitDate);
     }
 
     public int getChristMasDday() {

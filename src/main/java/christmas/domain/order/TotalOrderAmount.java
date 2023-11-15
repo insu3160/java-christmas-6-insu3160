@@ -16,11 +16,11 @@ public class TotalOrderAmount {
     }
 
     public boolean canParticipateInEvent() {
-        return this.totalOrderAmount >= MIN_ORDER_AMOUNT_FOR_EVENT;
+        return totalOrderAmount >= MIN_ORDER_AMOUNT_FOR_EVENT;
     }
 
     public boolean canGetGiftMenu() {
-        return this.totalOrderAmount >= MIN_ORDER_AMOUNT_FOR_CHAMPAGNE;
+        return totalOrderAmount >= MIN_ORDER_AMOUNT_FOR_CHAMPAGNE;
     }
 
     public int getTotalOrderAmount() {
