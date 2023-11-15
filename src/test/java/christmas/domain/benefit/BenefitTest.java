@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class BenefitTest {
     @Test
-    @DisplayName("인자 값으로 전달 받은 Event가 상태로 가진 Event와 같을 시 true 반환한다.")
+    @DisplayName("인자 값으로 전달 받은 Event가 상태로 가진 Event와 같을 시 true를 아닐 시 false를 반환한다.")
     void testMatchedEvent() {
         Benefit benefit = new Benefit(Event.GIFT, -2000);
 
