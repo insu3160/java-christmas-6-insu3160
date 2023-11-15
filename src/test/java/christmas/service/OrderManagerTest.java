@@ -54,4 +54,14 @@ class OrderManagerTest {
                 .hasMessageContaining(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
     }
 
+    @Test
+    @DisplayName("메뉴 갯수가 20개 초과일 경우 예외가 발생한다.")
+    void testValidateThrowsExceptionForOverMenuQuantityLimit() {
+        String[] inputOrders = {"샴페인-15", "해산물파스타-6"};
+
+        assertThatThrownBy(() -> orderManager.recordOrders(inputOrders))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessages.INVALID_ORDER_ERROR_MESSAGE);
+    }
+
 }
