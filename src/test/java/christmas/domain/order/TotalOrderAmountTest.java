@@ -17,7 +17,7 @@ class TotalOrderAmountTest {
     }
 
     @Test
-    @DisplayName("이벤트에 참여할 수 있는 금액이면 true를 반환한다.")
+    @DisplayName("이벤트에 참여할 수 있는 금액이면 true를 아니면 false를 반환한다.")
     void testCanParticipateInEvent() {
         TotalOrderAmount cantParticipateEvent = new TotalOrderAmount(8000);
         TotalOrderAmount canParticipateEvent = new TotalOrderAmount(12000);
