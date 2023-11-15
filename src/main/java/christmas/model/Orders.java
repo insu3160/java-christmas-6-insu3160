@@ -41,7 +41,6 @@ public class Orders {
             OrderDto orderDto = order.convertToOrderDto();
             orderDtos.add(orderDto);
         }
-
         return orderDtos;
     }
 
@@ -57,6 +56,7 @@ public class Orders {
                 .mapToInt(Order::getMenuQuantity)
                 .sum();
     }
+
     public int countDesertMenu() {
         return orders.stream()
                 .filter(order -> order.matchedCategory(Category.DESSERT))
