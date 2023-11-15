@@ -9,7 +9,7 @@ import christmas.enums.Menu;
 import christmas.utils.Converter;
 
 public class OrderManager {
-    private static final String ITEM_SEPARATOR = "-";
+    private static final String NAME_QUANTITY_SEPARATOR = "-";
     private static final int MENU_NAME_INDEX = 0;
     private static final int MENU_QUANTITY_INDEX = 1;
     private static final int ORDER_PARTS = 2;
@@ -17,7 +17,7 @@ public class OrderManager {
     public Orders recordOrders(String[] inputOrders) {
         Orders orders = new Orders();
         for (String order : inputOrders) {
-            orders.record(createOrder(order.split(ITEM_SEPARATOR)));
+            orders.record(createOrder(order.split(NAME_QUANTITY_SEPARATOR)));
         }
         validate(orders);
         return orders;
