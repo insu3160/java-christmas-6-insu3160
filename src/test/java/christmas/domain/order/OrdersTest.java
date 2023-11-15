@@ -40,11 +40,20 @@ class OrdersTest {
 
     @Test
     @DisplayName("음료만 있으면 true를 반환한다.")
-    void testHasOnlyBeverages() {
+    void testHasOnlyBeveragesWhenOnlyBeveragesExist() {
         recordOrder(Menu.RED_WINE, 2);
         recordOrder(Menu.ZERO_COLA, 2);
 
         assertThat(orders.hasOnlyBeverages()).isTrue();
+    }
+
+    @Test
+    @DisplayName("음료가 아닌 다른 음식이 있다면 false를 반환한다.")
+    void testHasOnlyBeveragesWhenNonBeverageExists() {
+        recordOrder(Menu.T_BONE_STEAK, 2);
+        recordOrder(Menu.ZERO_COLA, 2);
+
+        assertThat(orders.hasOnlyBeverages()).isFalse();
     }
 
     @Test
