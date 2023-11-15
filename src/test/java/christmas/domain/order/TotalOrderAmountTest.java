@@ -27,11 +27,13 @@ class TotalOrderAmountTest {
     }
 
     @Test
-    @DisplayName("증정 이벤트에 참여할 수 있다면 true를 반환한다.")
+    @DisplayName("증정 이벤트에 참여할 수 있다면 true를 아니면 false를 반환한다.")
     void testCanGetGift() {
-        TotalOrderAmount totalOrderAmount = new TotalOrderAmount(130000);
+        TotalOrderAmount canGetGiftAmount = new TotalOrderAmount(130000);
+        TotalOrderAmount cantGetGiftAmount = new TotalOrderAmount(110000);
 
-        assertThat(totalOrderAmount.canGetGiftMenu()).isTrue();
+        assertThat(canGetGiftAmount.canGetGiftMenu()).isTrue();
+        assertThat(cantGetGiftAmount.canGetGiftMenu()).isFalse();
     }
 
 }
